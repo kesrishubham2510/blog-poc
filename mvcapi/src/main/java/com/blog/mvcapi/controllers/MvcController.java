@@ -13,7 +13,7 @@ import com.blog.mvcapi.services.Requestor;
 
 @RestController
 @RequestMapping("/mvc")
-public class RequestRouter {
+public class MvcController {
 
     @Autowired
     private Requestor requestor;
