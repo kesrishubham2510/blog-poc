@@ -1,6 +1,7 @@
 package com.blog.mvcapi.controllers;
 
 import java.io.IOException;
+import java.util.concurrent.ExecutionException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,7 +20,7 @@ public class MvcController {
     private RequestorProcessor requestor;
 
     @PostMapping("getLog")
-    public String getResponse(@RequestBody Request request) throws InterruptedException, IOException {
+    public String getResponse(@RequestBody Request request) throws InterruptedException, ExecutionException {
         return requestor.logRequest(request);
     }
 }
