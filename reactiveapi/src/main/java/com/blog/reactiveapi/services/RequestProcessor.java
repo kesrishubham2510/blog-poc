@@ -1,6 +1,6 @@
 package com.blog.reactiveapi.services;
 
-import java.io.IOException;
+import java.time.Duration;
 import java.time.LocalTime;
 
 import org.springframework.stereotype.Service;
@@ -12,24 +12,22 @@ import reactor.core.publisher.Mono;
 
 @Slf4j
 @Service
-public class RequestProcessor{
+public class RequestProcessor {
 
-    public Mono<String> logRequest(Mono<Request> requestMono){
-        
-        return requestMono.flatMap((request)->{       
-            LocalTime timeStamp = LocalTime.now();
-            try {
-                Thread.sleep(5000);
-            } catch (InterruptedException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
-            String response = String.format("Request has been accepted at:- %s and returned at %s",timeStamp, LocalTime.now());
+    public Mono<String> logRequest(Mono<Request> requestMono) {
+
+        LocalTime timeStamp = LocalTime.now();
+        return requestMono.map((request) -> {
+            Mono.delay(Duration.ofMillis(5000));
+            System.out.println(request.getId()+" "+request.getCreationTime());
+            return request;
+        }).flatMap((request) -> {
+            String response = String.format("Request has been accepted at:- %s and returned at %s", timeStamp,
+                    LocalTime.now());
             log.info(response);
             return Mono.just(response);
         });
 
     }
 
-    
 }
