@@ -9,5 +9,4 @@ public class ReactiveapiApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(ReactiveapiApplication.class, args);
 	}
-
 }
