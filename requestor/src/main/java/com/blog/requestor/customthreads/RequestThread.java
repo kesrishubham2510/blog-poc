@@ -26,6 +26,7 @@ public class RequestThread implements Callable<String>{
     public String call() {
       
       log.info("sending request no."+this.request.getId()+" at:- "+LocalTime.now());
+      this.request.setCreationTime(LocalTime.now());
       return this.restTemplate.postForEntity(url, request,String.class).getBody();   
         
     }

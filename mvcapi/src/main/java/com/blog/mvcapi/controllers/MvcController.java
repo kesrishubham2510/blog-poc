@@ -9,14 +9,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.blog.library.Request;
-import com.blog.mvcapi.services.Requestor;
+import com.blog.mvcapi.services.RequestorProcessor;
 
 @RestController
 @RequestMapping("/mvc")
 public class MvcController {
 
     @Autowired
-    private Requestor requestor;
+    private RequestorProcessor requestor;
 
     @PostMapping("getLog")
     public String getResponse(@RequestBody Request request) throws InterruptedException, IOException {

@@ -11,7 +11,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Service
-public class Requestor {
+public class RequestorProcessor {
 
     public String logRequest(Request request) throws InterruptedException, IOException {
         LocalTime timeStamp = LocalTime.now();
