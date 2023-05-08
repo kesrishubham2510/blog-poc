@@ -4,15 +4,20 @@ import java.time.LocalTime;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.blog.library.Request;
+import com.blog.mvcapi.repositories.RequestRepository;
 
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Service
 public class RequestorProcessor {
+
+    @Autowired
+    private RequestRepository requestRepository;
 
     public String logRequest(Request request) throws InterruptedException, ExecutionException{
         LocalTime timeStamp = LocalTime.now();
@@ -34,6 +39,10 @@ public class RequestorProcessor {
                 mimicCall.get(), request.getCreationTime(), timeStamp.toString(), LocalTime.now());
         log.info(response);
         return response;
+    }
+
+    public Request saveRequest(Request request){
+        return requestRepository.save(request);
     }
 
 }
