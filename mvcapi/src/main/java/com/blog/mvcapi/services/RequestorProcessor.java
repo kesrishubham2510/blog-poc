@@ -1,14 +1,14 @@
 package com.blog.mvcapi.services;
 
 import java.time.LocalTime;
-import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.blog.library.Message;
 import com.blog.library.Request;
-import com.blog.mvcapi.repositories.RequestRepository;
+import com.blog.mvcapi.repositories.MessageRepository;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -17,32 +17,25 @@ import lombok.extern.slf4j.Slf4j;
 public class RequestorProcessor {
 
     @Autowired
-    private RequestRepository requestRepository;
+    private MessageRepository messageRepository;
 
     public String logRequest(Request request) throws InterruptedException, ExecutionException{
         LocalTime timeStamp = LocalTime.now();
-        
-        // Mimicing an api call which takes 5 seconds to complete
-        CompletableFuture<String> mimicCall = CompletableFuture.supplyAsync(()->{
-             try {
-                Thread.sleep(5000);
-                return String.valueOf(request.getId());
-            } catch (InterruptedException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
-              return "Exceptionn occured";
-        });
-        mimicCall.get();
-
         String response = String.format("Request:- %s, created at:- %s accepted at:- %s returns at %s",
-                mimicCall.get(), request.getCreationTime(), timeStamp.toString(), LocalTime.now());
+                request.getId(), request.getCreationTime(), timeStamp.toString(), LocalTime.now());
         log.info(response);
         return response;
     }
 
-    public Request saveRequest(Request request){
-        return requestRepository.save(request);
+    public Message saveMessage(Request request){
+        LocalTime timeStamp = LocalTime.now();
+        Message message = new Message();
+        String response = String.format("Request:- %s, created at:- %s accepted at:- %s returns at %s",
+        request.getId(), request.getCreationTime(), timeStamp.toString(), LocalTime.now());
+
+        message.setMessage(response);
+        message.setMessageLength(response.length());
+        return messageRepository.save(message);
     }
 
 }
