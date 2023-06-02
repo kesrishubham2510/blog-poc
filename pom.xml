@@ -22,7 +22,6 @@
 
     <modules>
          <module>library</module>
-         <module>requestor</module>
          <module>mvcapi</module>
          <module>reactiveapi</module>
     </modules>
