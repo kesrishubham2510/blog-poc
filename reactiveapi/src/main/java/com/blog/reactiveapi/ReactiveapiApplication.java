@@ -17,11 +17,6 @@ public class ReactiveapiApplication {
 		SpringApplication.run(ReactiveapiApplication.class, args);
 	}
 
-	// @Bean
-	// public NioEventLoopGroup eventLoopGroup(){
-	// return new NioEventLoopGroup(3);
-	// }
-
 	@Bean
 	public ReactiveWebServerFactory reactiveWebServerFactory() {
 		NettyReactiveWebServerFactory factory = new NettyReactiveWebServerFactory();
