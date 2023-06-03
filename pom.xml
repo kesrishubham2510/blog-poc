@@ -8,9 +8,10 @@
 		<version>3.0.6</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
+	
 	<groupId>com.blog</groupId>
 	<artifactId>globalpom</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	
 	<name>configurator</name>
 	<description>Root level pom to mamnage common dependencies</description>

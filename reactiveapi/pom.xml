@@ -15,7 +15,7 @@
 
 	<groupId>com.blog</groupId>
 	<artifactId>reactiveapi</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 
 	<name>reactiveapi</name>
 	<description>Demo project for Spring Boot</description>
@@ -28,7 +28,7 @@
 		<dependency>
 			<groupId>com.blog</groupId>
 			<artifactId>library</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<version>0.0.1</version>
 		</dependency>
 
 		<dependency>
