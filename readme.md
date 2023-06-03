@@ -33,7 +33,23 @@
     ````
 * The **mvcapi** & **reactiveapi** are configured to run on port 8001 and 8002 respectively.
 
-* The Request body uses **Message** entitity as it's template.
+* The request body parameter uses **Request** entitity as template.
+    ````
+    import java.time.LocalTime;
+
+    import lombok.Data;
+    
+    
+    @Data
+    public class Request {
+        private int id;
+        private LocalTime creationTime;
+    }
+
+    ````
+
+
+* The Application uses **Message** entitity as it's response template.
     ````
     import jakarta.persistence.Entity;
     import jakarta.persistence.GeneratedValue;
@@ -55,10 +71,24 @@
         private String message;
     }
     ````
+
+## Cloning the Repository
+
+* Open the directory where you want to keep the project, open the terminal at the folder and run the below command 
+    ````
+    git clone https://github.com/kesrishubham2510/blog-poc.git
+    ````
 ## Running the Applications
 
-* While running the application make sure to use **jakarta.persistence.Id** and **org.springframework.data.annotation.Id** when running
-**mvcapi** and **reactiveapi** respectively.
+* Make sure you have Java version 17 or later
+
+* After Successfull cloning, from the same path run,
+    ````
+    mvn clean; mvn compile
+    ````
+  to clean and build the jar files.
+
+* Open the repository in vscode or any other IDE. While running the application make sure to use **jakarta.persistence.Id** and **org.springframework.data.annotation.Id** when running**mvcapi** and **reactiveapi** respectively.
 
    
 
