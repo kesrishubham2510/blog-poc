@@ -88,7 +88,7 @@
     ````
   to clean and build the jar files.
 
-* Open the repository in vscode or any other IDE. While running the application make sure to use **jakarta.persistence.Id** and **org.springframework.data.annotation.Id** when running**mvcapi** and **reactiveapi** respectively.
+* Open the repository in vscode or any other IDE. While running the application make sure to use **jakarta.persistence.Id** and **org.springframework.data.annotation.Id** (in **com.blog.library.Message**) when running **mvcapi** and **reactiveapi** respectively.
 
 ## Use Jmeter to [test](https://www.simplilearn.com/tutorials/jmeter-tutorial/jmeter-api-testing) APIs
 
